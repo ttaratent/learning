@@ -1,0 +1,29 @@
+#@layout()
+#define main()
+<h1>栏目管理&nbsp;&nbsp;
+<a href="/column/add">创建栏目</a>
+</h1>
+<div class="table_box">
+	<table class="list">
+		<tbody>
+			<tr>
+				<th width="4%">id</th>
+				<th width="35%">名称</th>
+				<th width="12%">操作</th>
+			</tr>
+			
+			#for(x : columnPage.getList())
+			<tr>
+				<td style="text-align:left;">#(x.id)</td>
+				<td style="text-align:left;"><a href="/news/#(x.id)">#(x.name)</a></td>
+				<td style="text-align:left;">
+					&nbsp;&nbsp;<a href="/column/delete/#(x.id)">删除</a>
+					&nbsp;&nbsp;<a href="/column/edit/#(x.id)">修改</a>
+				</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+	#@paginate(columnPage.pageNumber, columnPage.totalPage, "/column/")
+</div>
+#end
